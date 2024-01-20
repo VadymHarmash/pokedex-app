@@ -15,6 +15,9 @@ const COLORS = {
     iceColor: '#79d7fc' + '80',
     normalColor: '#758237' + '80',
     dragonColor: '#9e9100' + '80',
+    darkColor: '#0a0f0b' + '80',
+    unknownColor: '#b3b3b3' + '80',
+    shadowColor: '#5e5e5e' + '80',
 }
 
 export const getColorForType = (type) => {
@@ -33,5 +36,8 @@ export const getColorForType = (type) => {
         type === 'steel' ? COLORS.steelColor :
         type === 'ice' ? COLORS.iceColor : 
         type === 'normal' ? COLORS.normalColor :
-        type === 'dragon' ? COLORS.dragonColor : null
+        type === 'dragon' ? COLORS.dragonColor :
+        type === 'dark' ? COLORS.darkColor :
+        type === 'unknown' ? COLORS.unknownColor :
+        type === 'shadow' ? COLORS.shadowColor : null
 }

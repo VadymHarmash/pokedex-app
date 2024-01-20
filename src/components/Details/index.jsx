@@ -30,7 +30,7 @@ export default function Details({ selectedPokemon }) {
                     />
                     <Text style={styles.detailsName}>{`${selectedPokemon.name.charAt(0).toUpperCase() + selectedPokemon.name.slice(1)} #${String(selectedPokemon.id).padStart(3, '0')} `}</Text>
                     <Table borderStyle={{ borderWidth: 1, borderColor: '#000000' }}>
-                        <Row data={tableHead} style={styles.tableHead} textStyle={styles.headDataText} />
+                        <Row data={tableHead} style={styles.tableHead} />
                         {tableData.map((rowData, index) => (
                             <Row
                                 key={index}
