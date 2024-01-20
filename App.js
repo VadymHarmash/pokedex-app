@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import PokemonCardsContainer from './src/components/PokemonCardsContainer'
 import Details from './src/components/Details'
-import TypesBar from './src/components/TypesBar';
+import TypesBar from './src/components/TypesBar'
 
 export default function App() {
-    const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [selectedPokemon, setSelectedPokemon] = useState(null)
 
     return (
         <SafeAreaView style={styles.container}>

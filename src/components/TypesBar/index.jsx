@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { TypesBarStyles } from "./TypesBarStyles";
-import { getColorForType } from "../../constants/AbilitityColor";
+import React, { useEffect, useState } from "react"
+import { FlatList, Text, TouchableOpacity, View } from "react-native"
+import { TypesBarStyles } from "./TypesBarStyles"
+import { getColorForType } from "../../constants/AbilitityColor"
 
 export default function TypesBar() {
-    const styles = TypesBarStyles;
-    const [types, setTypes] = useState([]);
-    const [selectedType, setSelectedType] = useState(null);
+    const styles = TypesBarStyles
+    const [types, setTypes] = useState([])
+    const [selectedType, setSelectedType] = useState(null)
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/type')
             .then(res => res.json())
             .then(data => {
-                setTypes(data.results);
+                setTypes(data.results)
             })
-    }, []);
+    }, [])
 
     const fetchByType = async (type) => {
         if (type) {
             await fetch(`https://pokeapi.co/api/v2/type/${type}`)
                 .then(res => res.json())
                 .then(data => console.log(data['name']))
-                .catch(error => console.error("Error fetching by type:", error));
+                .catch(error => console.error("Error fetching by type:", error))
         }
     }
 
     const handleTypePress = (type) => {
-        setSelectedType(type);
-        fetchByType(type);
+        setSelectedType(type)
+        fetchByType(type)
     }
 
     return (
@@ -42,7 +42,7 @@ export default function TypesBar() {
                         style={{
                             ...styles.typesListItem,
                             backgroundColor: getColorForType(item.name),
-                            borderColor: selectedType === item.name ? 'blue' : 'transparent', // Add border for selected type
+                            borderColor: selectedType === item.name ? 'blue' : 'transparent',
                         }}
                         onPress={() => handleTypePress(item.name)}
                     >
@@ -51,5 +51,5 @@ export default function TypesBar() {
                 )}
             />
         </View>
-    );
+    )
 }

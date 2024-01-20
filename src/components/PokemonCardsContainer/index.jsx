@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
-import PokemonCard from '../PokemonCard';
-import { PokemonCardsContainerStyles } from './PokemonCardsContainerStyles';
+import { useEffect, useState } from 'react'
+import { FlatList, Text, TouchableOpacity, View } from 'react-native'
+import PokemonCard from '../PokemonCard'
+import { PokemonCardsContainerStyles } from './PokemonCardsContainerStyles'
 
 export default function PokemonCardsContainer({ onSelectPokemon }) {
     const styles = PokemonCardsContainerStyles
