@@ -1,9 +1,9 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native'
-import { useEffect, useState } from 'react';
-import { getColorForType } from '../../constants/AbilitityColor';
-import { pokemonCardStyles } from './pokemonCardStyles';
+import { useEffect, useState } from 'react'
+import { getColorForType } from '../../constants/AbilitityColor'
+import { pokemonCardStyles } from './pokemonCardStyles'
 
-export default function PokemonCard({ url }) {
+export default function PokemonCard({ url, onSelectPokemon }) {
     const styles = pokemonCardStyles
     const [pokemon, setPokemon] = useState()
 
@@ -20,7 +20,7 @@ export default function PokemonCard({ url }) {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => console.log(pokemon)} >
+            onPress={() => onSelectPokemon(pokemon)} >
             <View style={styles.imageContainer}>
                 <Image
                     source={{

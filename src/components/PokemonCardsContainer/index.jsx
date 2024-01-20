@@ -3,7 +3,7 @@ import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import PokemonCard from '../PokemonCard';
 import { PokemonCardsContainerStyles } from './PokemonCardsContainerStyles';
 
-export default function PokemonCardsContainer() {
+export default function PokemonCardsContainer({ onSelectPokemon }) {
     const styles = PokemonCardsContainerStyles
     const [pokemonCollection, setPokemonCollection] = useState([])
     const [next, setNext] = useState()
@@ -32,6 +32,8 @@ export default function PokemonCardsContainer() {
         }
     }
 
+    const handleSelectPokemon = (pokemon) => onSelectPokemon(pokemon)
+
     return (
         <View style={styles.pokemonList}>
             <FlatList
@@ -39,7 +41,10 @@ export default function PokemonCardsContainer() {
                 keyExtractor={item => item.name}
                 numColumns={3}
                 renderItem={({ item }) => (
-                    <PokemonCard url={item.url} />
+                    <PokemonCard
+                        url={item.url}
+                        onSelectPokemon={handleSelectPokemon}
+                    />
                 )}
                 ListFooterComponent={
                     <TouchableOpacity
