@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, SafeAreaView, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import PokemonCard from './src/components/PokemonCard';
+import PokemonCardsContainer from './src/components/PokemonCardsContainer';
 
 export default function App() {
   const [pokemon, setPokemon] = useState([])
@@ -32,25 +33,22 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={pokemon}
-        keyExtractor={item => item.name}
-        renderItem={({ item }) => (
-          <PokemonCard url={item.url} name={item.name} />
-        )}
-        onEndReached={loadMore}
-        ListFooterComponent={() => isLoadingMore ? <ActivityIndicator /> : null}
-      />
-      {/* <TouchableOpacity
-        onPress={loadMore}
-      >
-        <Text>Load More</Text>
-      </TouchableOpacity> */}
+      <Text style={styles.title}>Pokedex</Text>
+      <PokemonCardsContainer />
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 25,
+    textAlign: 'center',
+    marginBottom: 10,
+    marginTop: 20,
+    borderWidth: 1,
+    width: '50%',
+    alignSelf: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

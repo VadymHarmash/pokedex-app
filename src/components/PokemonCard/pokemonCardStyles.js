@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const pokemonCardStyles = StyleSheet.create({
     container: {
-        width: '45%',
+        width: '33%',
         flexDirection: 'column',
         alignItems: 'center',
         borderWidth: 1,
@@ -13,15 +13,16 @@ export const pokemonCardStyles = StyleSheet.create({
         borderWidth: 1,
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 50,
+        height: 50,
     },
     name: {
-        fontWeight: "600"
+        fontWeight: "600",
+        fontSize: 10
     },
     types: {
         flexDirection: 'row',
-        gap: 20,
+        gap: 5,
         marginTop: 10
     },
     type: {
@@ -29,5 +30,6 @@ export const pokemonCardStyles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         borderRadius: 3,
+        fontSize: 8
     }
 })
