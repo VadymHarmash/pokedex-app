@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { getColorForType } from '../../constants/AbilitityColor';
 import { pokemonCardStyles } from './pokemonCardStyles';
 
-export default function PokemonCard({ url, name }) {
+export default function PokemonCard({ url }) {
     const styles = pokemonCardStyles
     const [pokemon, setPokemon] = useState()
 
@@ -26,7 +26,7 @@ export default function PokemonCard({ url, name }) {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => console.log(name)} >
+            onPress={() => console.log(pokemon)} >
             <View style={styles.imageContainer}>
                 <Image
                     source={{

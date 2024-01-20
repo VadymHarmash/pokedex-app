@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import PokemonCard from '../PokemonCard';
 
 export default function PokemonCardsContainer() {
-    const [pokemon, setPokemon] = useState([])
+    const [pokemonCollection, setPokemonCollection] = useState([])
     const [next, setNext] = useState()
     const [isLoadingMore, setIsLoadingMore] = useState(false)
 
@@ -11,7 +11,7 @@ export default function PokemonCardsContainer() {
         fetch('https://pokeapi.co/api/v2/pokemon/')
             .then(res => res.json())
             .then(data => {
-                setPokemon(data.results)
+                setPokemonCollection(data.results)
                 setNext(data.next)
             })
     }, [])
@@ -23,7 +23,7 @@ export default function PokemonCardsContainer() {
             fetch(next)
                 .then(res => res.json())
                 .then(data => {
-                    setPokemon(prevPokemon => [...prevPokemon, ...data.results])
+                    setPokemonCollection(prevPokemonCollection => [...prevPokemonCollection, ...data.results])
                     setNext(data.next)
                     setIsLoadingMore(false)
                 })
@@ -31,17 +31,23 @@ export default function PokemonCardsContainer() {
     }
 
     return (
-        <FlatList
-            style={styles.pokemonList}
-            data={pokemon}
-            keyExtractor={item => item.name}
-            numColumns={3}
-            renderItem={({ item }) => (
-                <PokemonCard url={item.url} name={item.name} />
-            )}
-            onEndReached={loadMore}
-            ListFooterComponent={() => isLoadingMore ? <ActivityIndicator /> : null}
-        />
+        <View style={styles.pokemonList}>
+            <FlatList
+                data={pokemonCollection}
+                keyExtractor={item => item.name}
+                numColumns={3}
+                renderItem={({ item }) => (
+                    <PokemonCard url={item.url} />
+                )}
+                ListFooterComponent={
+                    <TouchableOpacity 
+                        onPress={loadMore}
+                        style={styles.loadMoreBtn}>
+                        <Text style={styles.loadMoreText}>Load more</Text>
+                    </TouchableOpacity>
+                }
+            />
+        </View>
     )
 }
 
@@ -51,4 +57,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: '70%',
     },
+    loadMoreBtn: {
+        width: '100%',
+        backgroundColor: '#0080ff',
+        borderRadius: 10,
+        borderWidth: 1,
+        marginTop: 10
+    },
+    loadMoreText: {
+        textAlign: 'center',
+        color: '#ffffff',
+        fontWeight: '700',
+        padding: 10,
+    }
 })
