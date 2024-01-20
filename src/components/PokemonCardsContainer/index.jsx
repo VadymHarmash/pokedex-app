@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import PokemonCard from '../PokemonCard';
+import { PokemonCardsContainerStyles } from './PokemonCardsContainerStyles';
 
 export default function PokemonCardsContainer() {
+    const styles = PokemonCardsContainerStyles
     const [pokemonCollection, setPokemonCollection] = useState([])
     const [next, setNext] = useState()
     const [isLoadingMore, setIsLoadingMore] = useState(false)
@@ -40,7 +42,7 @@ export default function PokemonCardsContainer() {
                     <PokemonCard url={item.url} />
                 )}
                 ListFooterComponent={
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         onPress={loadMore}
                         style={styles.loadMoreBtn}>
                         <Text style={styles.loadMoreText}>Load more</Text>
@@ -50,24 +52,3 @@ export default function PokemonCardsContainer() {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    pokemonList: {
-        flex: 1,
-        backgroundColor: '#fff',
-        width: '70%',
-    },
-    loadMoreBtn: {
-        width: '100%',
-        backgroundColor: '#0080ff',
-        borderRadius: 10,
-        borderWidth: 1,
-        marginTop: 10
-    },
-    loadMoreText: {
-        textAlign: 'center',
-        color: '#ffffff',
-        fontWeight: '700',
-        padding: 10,
-    }
-})

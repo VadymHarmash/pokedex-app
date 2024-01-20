@@ -1,10 +1,4 @@
-import React from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-} from 'react-native'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { useEffect, useState } from 'react';
 import { getColorForType } from '../../constants/AbilitityColor';
 import { pokemonCardStyles } from './pokemonCardStyles';
