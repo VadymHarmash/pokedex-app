@@ -3,7 +3,6 @@ import {
     Text,
     View,
     Image,
-    ActivityIndicator,
     TouchableOpacity,
 } from 'react-native'
 import { useEffect, useState } from 'react';
