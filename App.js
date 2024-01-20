@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import PokemonCardsContainer from './src/components/PokemonCardsContainer'
 import Details from './src/components/Details'
+import TypesBar from './src/components/TypesBar';
 
 export default function App() {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -9,6 +10,7 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Pokedex</Text>
+            <TypesBar />
             <View style={styles.contentContainer}>
                 <PokemonCardsContainer onSelectPokemon={setSelectedPokemon} />
                 <Details selectedPokemon={selectedPokemon} />
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         textAlign: 'center',
         marginBottom: 10,
-        marginTop: 20,
+        marginTop: 50,
         borderWidth: 1,
         width: '50%',
         alignSelf: 'center',

@@ -11,7 +11,8 @@ export const PokemonCardsContainerStyles = StyleSheet.create({
         backgroundColor: '#0080ff',
         borderRadius: 10,
         borderWidth: 1,
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 20
     },
     loadMoreText: {
         textAlign: 'center',
