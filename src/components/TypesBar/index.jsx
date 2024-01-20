@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { TypesBarStyles } from "./TypesBarStyles";
 import { getColorForType } from "../../constants/AbilitityColor";
@@ -6,6 +6,7 @@ import { getColorForType } from "../../constants/AbilitityColor";
 export default function TypesBar() {
     const styles = TypesBarStyles;
     const [types, setTypes] = useState([]);
+    const [selectedType, setSelectedType] = useState(null);
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/type')
@@ -14,6 +15,20 @@ export default function TypesBar() {
                 setTypes(data.results);
             })
     }, []);
+
+    const fetchByType = async (type) => {
+        if (type) {
+            await fetch(`https://pokeapi.co/api/v2/type/${type}`)
+                .then(res => res.json())
+                .then(data => console.log(data['name']))
+                .catch(error => console.error("Error fetching by type:", error));
+        }
+    }
+
+    const handleTypePress = (type) => {
+        setSelectedType(type);
+        fetchByType(type);
+    }
 
     return (
         <View style={styles.typesBar}>
@@ -24,16 +39,17 @@ export default function TypesBar() {
                 numColumns={3}
                 renderItem={({ item }) => (
                     <TouchableOpacity
-                    style={{
-                        ...styles.typesListItem,
-                        backgroundColor: getColorForType(item.name),
-                    }}
-                        onPress={() => console.log(item.name)}
+                        style={{
+                            ...styles.typesListItem,
+                            backgroundColor: getColorForType(item.name),
+                            borderColor: selectedType === item.name ? 'blue' : 'transparent', // Add border for selected type
+                        }}
+                        onPress={() => handleTypePress(item.name)}
                     >
                         <Text style={styles.typesBarText}>{item.name}</Text>
                     </TouchableOpacity>
                 )}
             />
         </View>
-    )
+    );
 }
