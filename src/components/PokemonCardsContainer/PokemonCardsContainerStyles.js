@@ -5,6 +5,7 @@ export const PokemonCardsContainerStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         width: '70%',
+        marginBottom: 20
     },
     loadMoreBtn: {
         width: '100%',
@@ -12,7 +13,7 @@ export const PokemonCardsContainerStyles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         marginTop: 10,
-        marginBottom: 20
+        marginBottom: 2
     },
     loadMoreText: {
         textAlign: 'center',
