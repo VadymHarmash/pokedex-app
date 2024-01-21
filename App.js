@@ -16,7 +16,7 @@ export default function App() {
                 <Details selectedPokemon={selectedPokemon} />
             </View>
         </SafeAreaView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({

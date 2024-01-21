@@ -1,7 +1,7 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { useEffect, useState } from 'react'
 import { getColorForType } from '../../constants/AbilitityColor'
-import { pokemonCardStyles } from './PokemonCardStyles';
+import { pokemonCardStyles } from './PokemonCardStyles'
 
 export default function PokemonCard({ url, onSelectPokemon }) {
     const styles = pokemonCardStyles
